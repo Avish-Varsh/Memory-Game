@@ -5,7 +5,7 @@
 🚧 In Development
 
 ## Current version
-v0.1.0 - Initial Planning 
+v0.2.0 - Hardware Prototype
 
 ## Goal: 
 To create a fully functional Simon style Memory game complete with an enclosure, increasing difficulty and sound feedback.
@@ -38,14 +38,14 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 * [x] Select components
 * [x] Create GitHub repository
 * [x] Create initial project structure
-* [ ] Draft wiring schematic
+* [x] Draft wiring schematic
 
 ## Phase 2: Core Hardware
 
-* [ ] Connect LEDs and verify operation
-* [ ] Connect buttons and verify input
-* [ ] Connect buzzer and verify sound output
-* [ ] Build and test complete circuit
+* [x] Connect LEDs and verify operation
+* [x] Connect buttons and verify input
+* [x] Connect buzzer and verify sound output
+* [x] Build and test complete circuit
 
 ## Phase 3: Core Game Logic
 
@@ -109,13 +109,8 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 * [ ] Multiple Game play modes
 * [ ] Use ESP32 instead of Arduino to link the game to an online leaderboard
 
-## Images:
-> To be updated during development
+## Images
 
-      
+### Hardware Prototype v1
 
-
-
-
-
-
+![Hardware Prototype](images/hardware_v1.jpg)
