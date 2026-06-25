@@ -5,13 +5,16 @@
 🚧 In Development
 
 ## Current version
-v0.2.0 - Hardware Prototype
+v0.3.0 - LED sequence and speed control
 
 ## Goal: 
 To create a fully functional Simon style Memory game complete with an enclosure, increasing difficulty and sound feedback.
 
 ## Gameplay Overview:
 At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends.
+
+## Recent Changes:
+Created the led sequence with increasing difficulty and added a potentiometer to control the speed of the leds to add a layer of difficulty control.
 
 ## Components Used:
 |Name|Quantity|
@@ -21,6 +24,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 |Resistors 220 Ω|3|
 |Arduino Uno|1|
 |Piezo Buzzer|1|
+|Potentiometer|1|
 |Jumper wires|As per requirement|
 
 ## Planned Features:
@@ -32,7 +36,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 # Progress Roadmap:
 
-## Phase 1: Planning
+## Section 1: Planning
 
 * [x] Define project concept
 * [x] Select components
@@ -40,36 +44,36 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 * [x] Create initial project structure
 * [x] Draft wiring schematic
 
-## Phase 2: Core Hardware
+## Section 2: Core Hardware
 
 * [x] Connect LEDs and verify operation
 * [x] Connect buttons and verify input
 * [x] Connect buzzer and verify sound output
 * [x] Build and test complete circuit
 
-## Phase 3: Core Game Logic
+## Section 3: Core Game Logic
 
-* [ ] Generate random sequences
-* [ ] Display sequence to player
+* [x] Generate random sequences
+* [x] Display sequence to player
 * [ ] Read player input
 * [ ] Validate player input
 * [ ] Implement win/lose conditions
 * [ ] Add score tracking
 
-## Phase 4: Difficulty System
+## Section 4: Difficulty System
 
-* [ ] Increase sequence length each level
-* [ ] Increase playback speed as levels progress
+* [x] Increase sequence length each level
+* [x] Add potentiometer to control led blink speed
 * [ ] Balance game difficulty
 
-## Phase 5: Audio Feedback
+## Section 5: Audio Feedback
 
 * [ ] Add unique tones for each button
 * [ ] Add correct input feedback
 * [ ] Add incorrect input feedback
 * [ ] Add startup melody
 
-## Phase 6: Enclosure Design 
+## Section 6: Enclosure Design 
 
 * [ ] Create initial enclosure concept
 * [ ] Design button layout
@@ -78,14 +82,14 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 * [ ] Refine enclosure based on testing
 * [ ] Finalize enclosure design
 
-## Phase 7: Testing & Optimization
+## Section 7: Testing & Optimization
 
 * [ ] Test all game functions
 * [ ] Fix identified bugs
 * [ ] Improve code organization
 * [ ] Perform final hardware verification
 
-## Phase 8: Documentation
+## Section 8: Documentation
 
 * [ ] Create final schematic
 * [ ] Add circuit images
@@ -97,10 +101,10 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 ## Challenges Faced:
 > To be updated during development
 
-## Lessons Learned:
+## Skills Learned:
 > To be updated during development
 
-## Phase 9: Future Improvements:
+## Section 9: Future Improvements:
 * [ ] Add EEPROM to save important user data such as high scores
 * [ ] Add LCD for live feedback
 * [ ] Create custom Win/Lose screens for the LCD
@@ -114,3 +118,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 ### Hardware Prototype v1
 
 ![Hardware Prototype](images/hardware_v1.jpg)
+
+### Hardware Prototype v2
+
+![Hardware Prototype](images/hardware_v2.jpg)
