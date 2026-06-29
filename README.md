@@ -131,6 +131,8 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Debugging embedded software
 - Hardware/software integration
 
+> Additional skills will be documented as development continues.
+
 ## Section 9: Future Improvements:
 * [ ] Add EEPROM to save important user data such as high scores
 * [ ] Add LCD for live feedback

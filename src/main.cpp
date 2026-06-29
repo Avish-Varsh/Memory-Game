@@ -121,7 +121,7 @@ void loop() {
     checkwin();
     break;
     case lose: 
-    Serial.print("You lose start from beggining. Score:");
+    Serial.print("You lose start from begining. Score:");
     Serial.println(level);
     level = 0;
     counter = 0;
