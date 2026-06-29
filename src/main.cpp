@@ -1,59 +1,143 @@
 #include <Arduino.h>
 int const potenti = A5;
-int const leds[] ={ 11, 9, 10};
+int const leds[3] ={ 9, 10, 11};
  // if leds[0] is green led then btns[0] must also be green btn
-int const btns[] ={ 4, 5, 6};
+int const btns[3] ={ 4, 5, 6};
+int const btnnumber = 3; 
 int sequence[50]={}; 
-int input[50]={};
-// maximum 50 levels
 int const buzz = 7;
 int level;
-long m1 = 0;
-// previous millis
+long m1 = 0; // previous millis
+unsigned long m2[btnnumber] = {0,0,0}; //millis for button debounce
+unsigned int debounce = 50;
+bool inputflag[btnnumber] = {false, false, false}; // flags to store button state data
+bool waspressed[btnnumber] = {false, false, false}; // notes whether btn was pressed before or not
 float interval;
-bool on;
-// determines whether led should be on or off
+bool on; // determines whether led should be on or off
 int currentstate;
-enum gamestate {store, pattern, user, outcome};
-// possible states for the game
+enum gamestate {store, pattern, user, lose, win}; // possible states for the game
+int j; // for leds
+int counter; // input counter
+bool timer = false;// used to note when the timer is on or off;
 void setup() {
   Serial.begin(9600);
-  for(int i = 0; i<3; i++){
-    pinMode(leds[i], OUTPUT);
-    pinMode(btns[i], INPUT_PULLUP);
+  for(int p = 0; p < 3; p++){
+    pinMode(leds[p], OUTPUT);
+    pinMode(btns[p], INPUT);
+    digitalWrite(btns[p],HIGH);
   }
-  pinMode(A5,INPUT);
+  pinMode(potenti,INPUT);
   pinMode(buzz, OUTPUT);
-  randomSeed(analogRead(A0));
   level = 0;
   on = true; 
-  currentstate = store; 
+  currentstate = store;
+  j =  0;
+  counter = 0;
+  randomSeed(analogRead(A0));
 }
+
+void userflag() {
+for(int i = 0; i < btnnumber; i++){
+ int reading  =  digitalRead(btns[i]);
+ if(reading == LOW){
+  waspressed[i] = true; 
+ }
+ if(reading == HIGH && waspressed[i] == true){
+  if(timer ==  false){
+    m2[i] = millis();
+    timer = true; 
+  }
+ if((millis() - m2[i]) >= debounce && waspressed[i] == true){
+  inputflag[i] = true;
+  waspressed[i] = false;
+  timer = false;
+ }
+}
+}
+}
+
+void validateinput(int userinput){
+if(userinput == sequence[counter]){
+  counter = counter + 1;
+}else{
+  currentstate = lose;
+}
+}
+
+void checkwin(){
+  if(counter == (level + 1)){
+    currentstate = win;
+  }
+
+}
+
+void flagaction() {
+for(int i = 0; i < btnnumber; i++){
+  if(inputflag[i] == true){
+    validateinput(i);
+    inputflag[i] = false;
+  }
+}
+}
+
+
+
 
 int picked() {
-  return random(3);
+ return random(3);
 }
 
+
 void loop() {
+  counter = constrain(counter, 0, 51); 
+  j = constrain(j, 0, 51);
+  level = constrain(level, 0, 50); // max 50 levels;
   interval = (600 + (analogRead(potenti)/2));
   switch(currentstate){
     case store:
-     sequence[level] = picked(); 
+     sequence[level] = constrain(picked(), 0 , 2); 
      currentstate = pattern;
+     break;
     case pattern:
      if(on == true){
-       digitalWrite(leds[sequence[level]],HIGH);
+       digitalWrite(leds[sequence[j]],HIGH);
        if(millis() - m1 >= interval){
          m1 = millis();
-         digitalWrite(leds[sequence[level]],LOW);
+         digitalWrite(leds[sequence[j]],LOW);
          on = false;
         }
       }
       if(on == false && (millis() - m1 >= 500)){
           on = true;
-          level = level + 1;
-          currentstate = store;
+          j = j + 1;
         }
-        break;
+      if( j == (level+1)){
+        currentstate = user;
+      }
+      break;
+    case user:
+    userflag();
+    flagaction();
+    checkwin();
+    break;
+    case lose: 
+    Serial.print("You lose start from beggining. Score:");
+    Serial.println(level);
+    level = 0;
+    counter = 0;
+    j = 0;
+    m1 = millis();
+    currentstate = pattern;
+    break;
+    case win:
+    Serial.println("You win entering new level");
+    j = 0;
+    m1 = millis();
+    counter = 0;
+    level = level + 1;
+    Serial.print("level:");  
+    Serial.println(level);
+    currentstate = store;
+    break;
   }
 }

@@ -1,38 +1,47 @@
-# Memory game 
+# Simon-style Tactile Memory Game 
 
 ## Project Status
 
-🚧 In Development
+🚧 **Active Development** (Beta)
 
 ## Current version
-v0.3.0 - LED sequence and speed control
 
-## Goal: 
-To create a fully functional Simon style Memory game complete with an enclosure, increasing difficulty and sound feedback.
+**Version: v0.4.0 (Beta)**
+
+Current features:
+- Fully playable game loop
+- Random sequence generation
+- Player input validation
+- Progressive difficulty
+- Win/Lose conditions
+
+
+## Overview
+
+This project is a Simon-style memory game built using an Arduino Uno. The player must memorize and repeat an increasingly long sequence of colored LEDs using the corresponding push buttons.
+
+The project focuses on embedded systems programming, finite state machines, input validation, timing control and modular code design. It is being developed incrementally, with each version introducing new gameplay mechanics and hardware features.
+
 
 ## Gameplay Overview:
-At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends.
-
-## Recent Changes:
-Created the led sequence with increasing difficulty and added a potentiometer to control the speed of the leds to add a layer of difficulty control.
+At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends and they must restart the game.
 
 ## Components Used:
 |Name|Quantity|
 |----|--------|
-|Buttons|3(Each of different color, must correspond to LED colors)|
-|LEDs|3(Each of different color)|
+|Push Buttons|3 (One for each of a LED color)|
+|LEDs|3 (One for each color)|
 |Resistors 220 Ω|3|
 |Arduino Uno|1|
 |Piezo Buzzer|1|
 |Potentiometer|1|
 |Jumper wires|As per requirement|
 
-## Planned Features:
-- Simon says style memory game
+## Upcoming Features:
 - Sound feedback
-- Random sequence generation
-- Progressive difficulty scaling
 - Custom enclosure
+- LCD screen feedback 
+- Custom PCB 
 
 # Progress Roadmap:
 
@@ -55,16 +64,17 @@ Created the led sequence with increasing difficulty and added a potentiometer to
 
 * [x] Generate random sequences
 * [x] Display sequence to player
-* [ ] Read player input
-* [ ] Validate player input
-* [ ] Implement win/lose conditions
-* [ ] Add score tracking
+* [x] Read player input
+* [x] Validate player input
+* [x] Implement win/lose conditions
+* [x] Add score tracking
+* [x] Add correct game progression
 
 ## Section 4: Difficulty System
 
 * [x] Increase sequence length each level
-* [x] Add potentiometer to control led blink speed
-* [ ] Balance game difficulty
+* [x] Add potentiometer to control LED blink speed
+* [x] Balance game difficulty
 
 ## Section 5: Audio Feedback
 
@@ -98,18 +108,35 @@ Created the led sequence with increasing difficulty and added a potentiometer to
 * [ ] Document lessons learned
 * [ ] Complete README
 
-## Challenges Faced:
-> To be updated during development
+## Challenges Faced
 
-## Skills Learned:
-> To be updated during development
+- Designing a reliable input validation system while preventing accidental multiple button presses.
+- Debugging state transition issues that caused the game logic to become inconsistent.
+- Resolving timing conflicts between LED animations and player input.
+- Preventing invalid variable values caused by unintended state changes.
+- Structuring the code into reusable functions to improve maintainability.
+
+> Additional challenges will be documented as development continues.
+
+## Skills Learned
+
+- Finite State Machine (FSM) design
+- Edge detection for button input
+- Software debouncing techniques
+- Modular programming using custom functions
+- Enum-based state management
+- Switch-case driven program flow
+- Random sequence generation
+- Timing management using millis()
+- Debugging embedded software
+- Hardware/software integration
 
 ## Section 9: Future Improvements:
 * [ ] Add EEPROM to save important user data such as high scores
 * [ ] Add LCD for live feedback
 * [ ] Create custom Win/Lose screens for the LCD
 * [ ] Add a LED matrix to increase difficulty as sequences can come from a bigger space and in a harder to remember pattern
-* [ ] Make it chargeable by adding a battery charging module
+* [ ] Add a battery charging module to better the User Experience 
 * [ ] Multiple Game play modes
 * [ ] Use ESP32 instead of Arduino to link the game to an online leaderboard
 
@@ -117,8 +144,27 @@ Created the led sequence with increasing difficulty and added a potentiometer to
 
 ### Hardware Prototype v1
 
-![Hardware Prototype](images/hardware_v1.jpg)
+![Hardware Prototype v1](images/hardware_v1.jpg)
 
 ### Hardware Prototype v2
 
-![Hardware Prototype](images/hardware_v2.jpg)
+![Hardware Prototype v2](images/hardware_v2.jpg)
+
+## Version History
+
+### v0.4.0
+- Playable beta release
+- Added input validation
+- Added win/lose sequences
+- Improved game progression
+
+### v0.3.0
+- Added score tracking
+- Added progressive difficulty using random sequences that increase in length after each successful round 
+- Added a potentiometer to control LED speed
+
+### v0.2.0
+- Initial Hardware prototype and schematic
+
+### v0.1.0
+- Initial Planning
