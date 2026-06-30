@@ -1,46 +1,48 @@
-# Simon-style Tactile Memory Game 
+# Simon-style Retro Memory Game 
 
-## Project Status
+# Project Status
 
 🚧 **Active Development** (Beta)
 
 ## Current version
 
-**Version: v0.4.0 (Beta)**
+**Version: v0.5.0 (Beta)**
+
+_Latest update: Audio feedback_
 
 Current features:
 - Fully playable game loop
 - Random sequence generation
 - Player input validation
 - Progressive difficulty
-- Win/Lose conditions
-
+- Win/Loss sequences 
+- Unique audio feedback on player input
+- Startup melody 
 
 ## Overview
 
 This project is a Simon-style memory game built using an Arduino Uno. The player must memorize and repeat an increasingly long sequence of colored LEDs using the corresponding push buttons.
 
-The project focuses on embedded systems programming, finite state machines, input validation, timing control and modular code design. It is being developed incrementally, with each version introducing new gameplay mechanics and hardware features.
+The project focuses on embedded systems programming, finite state machines, input validation, timing control and modular code design. It is being developed incrementally, with each version introducing new gameplay mechanics and hardware features. Development is being tracked using Git for versioning to document project progression.
 
 
 ## Gameplay Overview:
 At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends and they must restart the game.
 
+
 ## Components Used:
 |Name|Quantity|
 |----|--------|
-|Push Buttons|3 (One for each of a LED color)|
-|LEDs|3 (One for each color)|
+|LEDs|3 (One of each color)|
+|Push Buttons|3 (One for each LED color)|
 |Resistors 220 Ω|3|
 |Arduino Uno|1|
 |Piezo Buzzer|1|
 |Potentiometer|1|
 |Jumper wires|As per requirement|
 
-## Upcoming Features:
-- Sound feedback
+## Planned Features:
 - Custom enclosure
-- LCD screen feedback 
 - Custom PCB 
 
 # Progress Roadmap:
@@ -78,16 +80,18 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 ## Section 5: Audio Feedback
 
-* [ ] Add unique tones for each button
-* [ ] Add correct input feedback
-* [ ] Add incorrect input feedback
-* [ ] Add startup melody
+* [x] Add unique tones for each button
+* [x] Add correct input feedback
+* [x] Add loss melody
+* [x] Add startup melody
+* [x] Add win melody
 
 ## Section 6: Enclosure Design 
 
 * [ ] Create initial enclosure concept
 * [ ] Design button layout
 * [ ] Design LED placement
+* [ ] Create custom PCB
 * [ ] Create enclosure v1
 * [ ] Refine enclosure based on testing
 * [ ] Finalize enclosure design
@@ -133,13 +137,13 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 > Additional skills will be documented as development continues.
 
-## Section 9: Future Improvements:
+## Section 9: Future Improvements
 * [ ] Add EEPROM to save important user data such as high scores
 * [ ] Add LCD for live feedback
-* [ ] Create custom Win/Lose screens for the LCD
-* [ ] Add a LED matrix to increase difficulty as sequences can come from a bigger space and in a harder to remember pattern
-* [ ] Add a battery charging module to better the User Experience 
-* [ ] Multiple Game play modes
+* [ ] Create custom win/loss screens for the LCD
+* [ ] Add an LED matrix to increase difficulty as sequences can come from a bigger space and in a harder to remember pattern
+* [ ] Add a charging feature to improve portability
+* [ ] Multiple gameplay modes
 * [ ] Use ESP32 instead of Arduino to link the game to an online leaderboard
 
 ## Images
@@ -154,6 +158,13 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 ## Version History
 
+### v0.5.0
+- Added unique audio feedback for each button
+- Added startup melody
+- Added win melody
+- Added loss melody
+- Integrated audio feedback into gameplay
+
 ### v0.4.0
 - Playable beta release
 - Added input validation
@@ -166,7 +177,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Added a potentiometer to control LED speed
 
 ### v0.2.0
-- Initial Hardware prototype and schematic
+- Initial hardware prototype and schematic
 
 ### v0.1.0
-- Initial Planning
+- Initial planning

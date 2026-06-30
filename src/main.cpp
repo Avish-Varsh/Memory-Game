@@ -9,6 +9,7 @@ int const buzz = 7;
 int level;
 long m1 = 0; // previous millis
 unsigned long m2[btnnumber] = {0,0,0}; //millis for button debounce
+unsigned long tonemillis[5] = {0,0,0,0,0}; // stores time for which each tone must play till they change.  
 unsigned int debounce = 50;
 bool inputflag[btnnumber] = {false, false, false}; // flags to store button state data
 bool waspressed[btnnumber] = {false, false, false}; // notes whether btn was pressed before or not
@@ -19,6 +20,9 @@ enum gamestate {store, pattern, user, lose, win}; // possible states for the gam
 int j; // for leds
 int counter; // input counter
 bool timer = false;// used to note when the timer is on or off;
+bool startup;
+bool lost = false;
+bool won = false;
 void setup() {
   Serial.begin(9600);
   for(int p = 0; p < 3; p++){
@@ -34,6 +38,7 @@ void setup() {
   j =  0;
   counter = 0;
   randomSeed(analogRead(A0));
+  startup = true; 
 }
 
 void userflag() {
@@ -59,28 +64,37 @@ for(int i = 0; i < btnnumber; i++){
 void validateinput(int userinput){
 if(userinput == sequence[counter]){
   counter = counter + 1;
+  if(userinput == 0){
+  tone(buzz,262,10);
+  }
+  if(userinput == 1){
+    tone(buzz,5000,20);
+  }
+  if(userinput == 2){
+    tone(buzz,2000,15);
+  }
 }else{
+  lost = true; 
   currentstate = lose;
 }
 }
 
 void checkwin(){
   if(counter == (level + 1)){
+    won = true; 
     currentstate = win;
   }
-
 }
+
 
 void flagaction() {
 for(int i = 0; i < btnnumber; i++){
-  if(inputflag[i] == true){
+  if(inputflag[i] == true){ 
     validateinput(i);
     inputflag[i] = false;
   }
 }
 }
-
-
 
 
 int picked() {
@@ -89,6 +103,15 @@ int picked() {
 
 
 void loop() {
+  if(startup == true){
+    tone(buzz,262,180);
+    delay(200);
+    tone(buzz,392,180);
+    delay(200);
+    tone(buzz, 523, 180);
+    delay(200);
+    startup = false; 
+  }
   counter = constrain(counter, 0, 51); 
   j = constrain(j, 0, 51);
   level = constrain(level, 0, 50); // max 50 levels;
@@ -121,23 +144,71 @@ void loop() {
     checkwin();
     break;
     case lose: 
-    Serial.print("You lose start from begining. Score:");
-    Serial.println(level);
-    level = 0;
-    counter = 0;
-    j = 0;
-    m1 = millis();
-    currentstate = pattern;
+    if(lost == true){
+      tone(buzz,5000,60);
+      tonemillis[0] = millis() + 80;
+      lost = false;
+    }
+    if(millis() == tonemillis[0]){
+      tone(buzz,1800,80);
+      tonemillis[1] = millis() + 100;
+    }
+    if(millis() == tonemillis[1]){
+      tone(buzz,800,80);
+      tonemillis[2] = millis() + 100;
+    }
+    if(millis() == tonemillis[2]){
+      tone(buzz,350,60);
+      tonemillis[3] = millis() + 80;
+    }
+    if(millis() == tonemillis[3]){
+      tone(buzz,180,80);
+      tonemillis[4] = millis() + 80;
+    }
+    if(millis() == tonemillis[4]){
+      Serial.print("You lose start from begining. Score:");
+      Serial.println(level);
+      level = 0;
+      counter = 0;
+      j = 0;
+      m1 = millis();
+      currentstate = pattern;
+      break; 
+    }
     break;
     case win:
-    Serial.println("You win entering new level");
-    j = 0;
-    m1 = millis();
-    counter = 0;
-    level = level + 1;
-    Serial.print("level:");  
-    Serial.println(level);
-    currentstate = store;
+    if(won == true){
+      tone(buzz,523,60);
+      tonemillis[0] =  millis() + 80;
+      won = false;
+    }
+    if(millis() == tonemillis[0]){
+      tone(buzz,1000,80);
+      tonemillis[1] = millis() + 100;
+    }
+    if(millis() == tonemillis[1]){
+      tone(buzz,2000,80);
+      tonemillis[2] = millis() + 100;
+    }
+    if(millis() == tonemillis[2]){
+      tone(buzz,3500,80);
+      tonemillis[3] = millis() + 100;
+    }
+    if(millis() == tonemillis[3]){
+      tone(buzz,5000,80);
+      tonemillis[4] = millis() + 80;
+    }
+    if(millis() == tonemillis[4]){
+      Serial.println("You win entering new level");
+      j = 0;
+      counter = 0;
+      level = level + 1;
+      Serial.print("level:");  
+      Serial.println(level);
+      m1 = millis();
+      currentstate = store; 
+      break;
+    }
     break;
   }
 }
