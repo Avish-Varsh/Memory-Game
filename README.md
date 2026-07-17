@@ -6,9 +6,9 @@
 
 ## Current version
 
-**Version: v0.5.0 (Beta)**
+**Version: v0.6.0 (Beta)**
 
-_Latest update: Audio feedback_
+_Latest update: Custom PCB_
 
 Current features:
 - Fully playable game loop
@@ -18,6 +18,8 @@ Current features:
 - Win/Loss sequences 
 - Unique audio feedback on player input
 - Startup melody 
+- Custom PCB
+- Battery powered usability 
 
 ## Overview
 
@@ -25,6 +27,7 @@ This project is a Simon-style memory game built using an Arduino Uno. The player
 
 The project focuses on embedded systems programming, finite state machines, input validation, timing control and modular code design. It is being developed incrementally, with each version introducing new gameplay mechanics and hardware features. Development is being tracked using Git for versioning to document project progression.
 
+📹 **[Gameplay Demo (Breadboard)](evidence/demo_v1.mp4)**
 
 ## Gameplay Overview:
 At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends and they must restart the game.
@@ -40,10 +43,12 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 |Piezo Buzzer|1|
 |Potentiometer|1|
 |Jumper wires|As per requirement|
+|9v alkaline battery|1|
+|9v battery Mount|1|
 
 ## Planned Features:
 - Custom enclosure
-- Custom PCB 
+-  EEPROM based high score 
 
 # Progress Roadmap:
 
@@ -88,10 +93,10 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 ## Section 6: Enclosure Design 
 
-* [ ] Create initial enclosure concept
-* [ ] Design button layout
-* [ ] Design LED placement
-* [ ] Create custom PCB
+* [x] Create initial enclosure concept
+* [x] Design button layout
+* [x] Design LED placement
+* [x] Create custom PCB
 * [ ] Create enclosure v1
 * [ ] Refine enclosure based on testing
 * [ ] Finalize enclosure design
@@ -119,6 +124,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Resolving timing conflicts between LED animations and player input.
 - Preventing invalid variable values caused by unintended state changes.
 - Structuring the code into reusable functions to improve maintainability.
+- Finding accurate part footprints.
 
 > Additional challenges will be documented as development continues.
 
@@ -134,11 +140,12 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Timing management using millis()
 - Debugging embedded software
 - Hardware/software integration
+- PCB design 
 
 > Additional skills will be documented as development continues.
 
 ## Section 9: Future Improvements
-* [ ] Add EEPROM to save important user data such as high scores
+* [ ] Add  EEPROM to save important user data such as high scores
 * [ ] Add LCD for live feedback
 * [ ] Create custom win/loss screens for the LCD
 * [ ] Add an LED matrix to increase difficulty as sequences can come from a bigger space and in a harder to remember pattern
@@ -150,13 +157,17 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 ### Hardware Prototype v1
 
-![Hardware Prototype v1](images/hardware_v1.jpg)
+![Hardware Prototype v1](evidence/hardware_v1.jpg)
 
 ### Hardware Prototype v2
 
-![Hardware Prototype v2](images/hardware_v2.jpg)
+![Hardware Prototype v2](evidence/hardware_v2.jpg)
 
 ## Version History
+
+### v0.6.0
+- Custom PCB 
+- Battery power 
 
 ### v0.5.0
 - Added unique audio feedback for each button
