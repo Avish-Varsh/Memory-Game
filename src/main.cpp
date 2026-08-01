@@ -114,7 +114,7 @@ void loop() {
   }
   counter = constrain(counter, 0, 51); 
   j = constrain(j, 0, 51);
-  level = constrain(level, 0, 50); // max 50 levels;
+  level = constrain(level, 0, 50); // max 50 levels
   interval = (600 + (analogRead(potenti)/2));
   switch(currentstate){
     case store:
@@ -166,7 +166,8 @@ void loop() {
       tonemillis[4] = millis() + 80;
     }
     if(millis() == tonemillis[4]){
-      Serial.print("You lose start from begining. Score:");
+      Serial.println("You lose start from begining.");
+      Serial.print("Score:");
       Serial.println(level);
       level = 0;
       counter = 0;

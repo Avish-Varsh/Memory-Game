@@ -6,9 +6,9 @@
 
 ## Current version
 
-**Version: v0.6.0 (Beta)**
+**Version: v1 (Full release)**
 
-_Latest update: Custom PCB_
+_Latest update: Full release_
 
 Current features:
 - Fully playable game loop
@@ -18,7 +18,7 @@ Current features:
 - Win/Loss sequences 
 - Unique audio feedback on player input
 - Startup melody 
-- Custom PCB
+- Custom multi level with open circuit design PCB
 - Battery powered usability 
 
 ## Overview
@@ -33,21 +33,28 @@ The project focuses on embedded systems programming, finite state machines, inpu
 At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends and they must restart the game.
 
 
-## Components Used:
-|Name|Quantity|
-|----|--------|
-|LEDs|3 (One of each color)|
-|Push Buttons|3 (One for each LED color)|
-|Resistors 220 Ω|3|
-|Arduino Uno|1|
-|Piezo Buzzer|1|
-|Potentiometer|1|
-|Jumper wires|As per requirement|
-|9v alkaline battery|1|
-|9v battery Mount|1|
+## Bill of Materials (BOM)
+
+| Qty | Component | Value / Part | Description |
+|---:|------------|--------------|-------------|
+| 1 | Arduino Nano | Arduino Nano v3.x | Main microcontroller |
+| 1 | 9 V Battery | — | Power source |
+| 1 | Piezo Buzzer | — | Polarized buzzer for audio feedback |
+| 1 | Red LED | — | Visual feedback |
+| 1 | Green LED | — | Visual feedback |
+| 1 | Blue LED | — | Visual feedback |
+| 3 | Resistors | 220 Ω | Current-limiting resistors for LEDs |
+| 1 | 10 kΩ Potentiometer | B10K | Linear potentiometer |
+| 1 | Red Push Button | SW_Push | User input |
+| 1 | Green Push Button | SW_Push | User input |
+| 1 | Blue Push Button | SW_Push | User input |
+| 1 | Power Switch | SPST | Main power switch |
+| 1 | 1×8 Pin Header | Male | Board-to-board connector |
+| 1 | 1×8 Socket Header | Female | Board-to-board connector |
+| 1 | 1×1 Pin Header | Male | Single-pin connector |
+| 1 | 1×1 Socket Header | Female | Single-pin connector |
 
 ## Planned Features:
-- Custom enclosure
 -  EEPROM based high score 
 
 # Progress Roadmap:
@@ -97,25 +104,25 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 * [x] Design button layout
 * [x] Design LED placement
 * [x] Create custom PCB
-* [ ] Create enclosure v1
-* [ ] Refine enclosure based on testing
-* [ ] Finalize enclosure design
+* [x] Create enclosure v1
+* [x] Refine enclosure based on testing
+* [x] Finalize enclosure design
 
 ## Section 7: Testing & Optimization
 
-* [ ] Test all game functions
-* [ ] Fix identified bugs
-* [ ] Improve code organization
-* [ ] Perform final hardware verification
+* [x] Test all game functions
+* [x] Fix identified bugs
+* [x] Improve code organization
+* [x] Perform final hardware verification
 
 ## Section 8: Documentation
 
-* [ ] Create final schematic
-* [ ] Add circuit images
-* [ ] Add project photos
-* [ ] Document challenges faced
-* [ ] Document lessons learned
-* [ ] Complete README
+* [x] Create final schematic
+* [x] Add circuit images
+* [x] Add project photos
+* [x] Document challenges faced
+* [x] Document lessons learned
+* [x] Complete README
 
 ## Challenges Faced
 
@@ -125,6 +132,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Preventing invalid variable values caused by unintended state changes.
 - Structuring the code into reusable functions to improve maintainability.
 - Finding accurate part footprints.
+- Aligning parts to create multi level PCB
 
 > Additional challenges will be documented as development continues.
 
@@ -140,7 +148,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Timing management using millis()
 - Debugging embedded software
 - Hardware/software integration
-- PCB design 
+- Multi level PCB design 
 
 > Additional skills will be documented as development continues.
 
@@ -164,6 +172,10 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 ![Hardware Prototype v2](evidence/hardware_v2.jpg)
 
 ## Version History
+
+### v1.0.0
+- Multi level PCB
+- Open circuit design
 
 ### v0.6.0
 - Custom PCB 
