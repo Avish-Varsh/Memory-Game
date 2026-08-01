@@ -57,8 +57,6 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 | 1 | 1×1 Pin Header | Male | Single-pin connector |
 | 1 | 1×1 Socket Header | Female | Single-pin connector |
 
-## Planned Features:
--  EEPROM based high score 
 
 # Progress Roadmap:
 
