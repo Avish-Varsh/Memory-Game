@@ -29,6 +29,9 @@ The project focuses on embedded systems programming, finite state machines, inpu
 
 📹 **[Gameplay Demo (Breadboard)](evidence/demo_v1.mp4)**
 
+## Importan Note
+To make sure this project is accessible to as many people as possible. I have used an open circuit design without a proper enclosure and rather used the PCB itself as an enclosure to preserve the retro feel of the product and ensure anyone with any kind of components can create and use it. As the a case would require strict measurements and only certain parts to be used. I don't intend to turn this into a consumer grade product, if anyone feels like they would like to please fell free as long as you credit me in the design.  
+
 ## Gameplay Overview:
 At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends and they must restart the game.
 
