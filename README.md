@@ -2,11 +2,11 @@
 
 # Project Status
 
-🚧 **Active Development** (Beta)
+✅ **Full relase** 
 
 ## Current version
 
-**Version: v1 (Full release)**
+**Version: v1.0.0 (Full release)**
 
 _Latest update: Full release_
 
