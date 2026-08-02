@@ -2,15 +2,17 @@
 
 # Project Status
 
-✅ **Full relase** 
+✅ **Full release** 
 
 ## Current version
 
-**Version: v1.0.0 (Full release)**
+**Version: v1.1.0**
 
-_Latest update: Full release_
+_Latest update: High-score storage_
 
 Current features:
+- 100 levels 
+- High-score storage
 - Fully playable game loop
 - Random sequence generation
 - Player input validation
@@ -18,7 +20,7 @@ Current features:
 - Win/Loss sequences 
 - Unique audio feedback on player input
 - Startup melody 
-- Custom multi level with open circuit design PCB
+- Custom multi level with visible circuit design PCB
 - Battery powered usability 
 
 ## Overview
@@ -29,8 +31,8 @@ The project focuses on embedded systems programming, finite state machines, inpu
 
 📹 **[Gameplay Demo (Breadboard)](evidence/demo_v1.mp4)**
 
-## Importan Note
-To make sure this project is accessible to as many people as possible. I have used an open circuit design without a proper enclosure and rather used the PCB itself as an enclosure to preserve the retro feel of the product and ensure anyone with any kind of components can create and use it. As the a case would require strict measurements and only certain parts to be used. I don't intend to turn this into a consumer grade product, if anyone feels like they would like to please fell free as long as you credit me in the design.  
+## Important Note
+To make sure this project is accessible to as many people as possible. I have used an visible circuit design without a proper enclosure and rather used the PCB itself as an enclosure to preserve the retro feel of the product and ensure anyone with any kind of components can create and use it. As the a case would require strict measurements and only certain parts to be used. I don't intend to turn this into a consumer grade product, if anyone feels like they would like to please fell free as long as you credit me in the design.  
 
 ## Gameplay Overview:
 At startup, a random sequence of LEDs is displayed. The player must replicate the sequence using the corresponding colored buttons. Each successful round increases the difficulty by extending the sequence length and increasing the playback speed. If the player enters an incorrect sequence at any point, the game ends and they must restart the game.
@@ -134,6 +136,7 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Structuring the code into reusable functions to improve maintainability.
 - Finding accurate part footprints.
 - Aligning parts to create multi level PCB
+- Making sure High-score was only set to 0 on first boot. 
 
 > Additional challenges will be documented as development continues.
 
@@ -150,11 +153,12 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 - Debugging embedded software
 - Hardware/software integration
 - Multi level PCB design 
+- Using EEPROM for storage of important variables.  
 
 > Additional skills will be documented as development continues.
 
 ## Section 9: Future Improvements
-* [ ] Add  EEPROM to save important user data such as high scores
+* [x] Add  EEPROM to save important user data such as high scores
 * [ ] Add LCD for live feedback
 * [ ] Create custom win/loss screens for the LCD
 * [ ] Add an LED matrix to increase difficulty as sequences can come from a bigger space and in a harder to remember pattern
@@ -174,9 +178,13 @@ At startup, a random sequence of LEDs is displayed. The player must replicate th
 
 ## Version History
 
+### v1.1.0
+- Maximum 100 levels
+- High-score storage 
+
 ### v1.0.0
 - Multi level PCB
-- Open circuit design
+- Visible circuit design
 
 ### v0.6.0
 - Custom PCB 

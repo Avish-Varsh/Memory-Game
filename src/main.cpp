@@ -1,10 +1,11 @@
 #include <Arduino.h>
+#include <EEPROM.h>
 int const potenti = A5;
 int const leds[3] ={ 9, 10, 11};
  // if leds[0] is green led then btns[0] must also be green btn
 int const btns[3] ={ 4, 5, 6};
 int const btnnumber = 3; 
-int sequence[50]={}; 
+int sequence[100]={}; 
 int const buzz = 7;
 int level;
 long m1 = 0; // previous millis
@@ -23,6 +24,10 @@ bool timer = false;// used to note when the timer is on or off;
 bool startup;
 bool lost = false;
 bool won = false;
+int lock = 10; 
+int key = 122; // Can be decoded for an easter egg :) 
+int scorestore;
+int highscore; 
 void setup() {
   Serial.begin(9600);
   for(int p = 0; p < 3; p++){
@@ -39,6 +44,10 @@ void setup() {
   counter = 0;
   randomSeed(analogRead(A0));
   startup = true; 
+  if(EEPROM.read(lock) != key){
+    EEPROM.put(lock, key);
+    EEPROM.put(scorestore,0);
+  }
 }
 
 void userflag() {
@@ -112,9 +121,10 @@ void loop() {
     delay(200);
     startup = false; 
   }
-  counter = constrain(counter, 0, 51); 
-  j = constrain(j, 0, 51);
-  level = constrain(level, 0, 50); // max 50 levels
+  counter = constrain(counter, 0, 101); 
+  j = constrain(j, 0, 101);
+  level = constrain(level, 0, 100); 
+  highscore = constrain(level, 0 , 100); // max 100 levels
   interval = (600 + (analogRead(potenti)/2));
   switch(currentstate){
     case store:
@@ -169,6 +179,12 @@ void loop() {
       Serial.println("You lose start from begining.");
       Serial.print("Score:");
       Serial.println(level);
+      if(EEPROM.read(scorestore) < level){
+        highscore = level;
+        EEPROM.put(scorestore, highscore);
+        Serial.println("New Highscore!!!");
+        Serial.println(highscore);
+      }
       level = 0;
       counter = 0;
       j = 0;
